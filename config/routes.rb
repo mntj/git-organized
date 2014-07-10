@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
- root to: 'index'
- get '/auth/:provider/callback', to: 'index'
+ root to: 'welcome#index'
+ get '/auth/:provider/callback' => 'welcome#index'
 end
