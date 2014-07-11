@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
     token = params[:oauth_token]
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
