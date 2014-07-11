@@ -24,12 +24,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
-  gem 'pry'
+  #gem 'pry'
   gem 'rspec-rails'
 end
 
-gem 'pry-rails', :group => :development
-
+gem 'pry'
+gem 'pry-rails'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'sorcery', '~> 0.8.6'
