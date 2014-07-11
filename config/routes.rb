@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'welcome#index'
   # GitHub
   get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => 'welcome#index'
