@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    token = params[:oauth_token]
+    #token = params[:oauth_token]
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
     redirect_to root_path
