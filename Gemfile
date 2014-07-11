@@ -25,6 +25,7 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-rails'
   gem 'rspec-rails'
 end
 
