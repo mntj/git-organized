@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
       #Github tokens never expire!
       #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.github_email = auth.info.email
-      user.github_profile_img = auth.info['image']
+      user.github_profile_img = auth.info.image
       user.email = user.github_email || "anon@ymous.com"
       user.password = "notarealpassword"
       user.save!
