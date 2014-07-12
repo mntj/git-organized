@@ -1,9 +1,13 @@
-window.GitOrganized =
-  Models: {}
-  Collections: {}
-  Views: {}
-  Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+window.GitOrganized = {
+  Models: {},
+  Collections: {},
+  Views: {},
+  Routers: {},
+  initialize: function() {
+    alert('Hello from Backbone!');
+  }
+};
 
-$(document).ready ->
-  GitOrganized.initialize()
+$(document).ready(function(){
+  GitOrganized.initialize();
+});
