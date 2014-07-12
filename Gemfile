@@ -31,6 +31,8 @@ end
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'sorcery', '~> 0.8.6'
+gem 'backbone-on-rails'
+gem 'jquery-ui-rails'
 
 group :production do
   gem 'rails_12factor'
