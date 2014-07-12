@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # GitHub
   get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => 'welcome#index'
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  get '/signout' => 'sessions#destroy'
 
   # Sorcery Authentication
   get 'signup' => 'users#new', as: 'signup'
