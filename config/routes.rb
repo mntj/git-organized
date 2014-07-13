@@ -12,4 +12,14 @@ Rails.application.routes.draw do
   post '/users' => 'users#create', as: 'users'
   delete '/users/:id' => 'users#destroy', as: 'destroy_user'
 
+  resources :commits
+
+  resources :notes
+
+  resources :repos
+
+  resources :resource_items
+
+  resources :todo_items
+
 end
