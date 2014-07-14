@@ -21,14 +21,29 @@ class User < ActiveRecord::Base
   end
 
   def update_github_repos_and_commits
-    repos_url = self.repos_url
+    # auth_str raises request rate limit from 60 to 5000 per hour
+    auth_str = "?client_id=#{ENV['GITHUB_KEY']}&client_secret=#{ENV['GITHUB_SECRET']}"
+    repos_url = self.repos_url + auth_str
+    # Request user's repositories
     response = HTTParty.get(repos_url, headers: {"User-Agent" => "git-organized"})
     for i in 0...response.length
-      current_repo = Repo.create(user_id: self.id, name: response[i]['name'], birthday: response[i]['created_at'], commits_url: response[i]['commits_url'], description: response[i]['description'])
+      current_repo = Repo.create(user_id: self.id,
+                                    name: response[i]['name'],
+                                    birthday: response[i]['created_at'],
+                                    commits_url: response[i]['commits_url'],
+                                    description: response[i]['description'])
       commit_url_arr = response[i]['commits_url'].scan(/.+?(?={)/)
-      commits_response = HTTParty.get(commit_url_arr[0], headers: {"User-Agent" => "git-organized"})
+      commits_url = commit_url_arr[0] + auth_str
+      # Request user's commits for each repository
+      commits_response = HTTParty.get(commits_url, headers: {"User-Agent" => "git-organized"})
       for j in 0...commits_response.length
-        Commit.create(repo_id: current_repo.id, commiter_name: commits_response[j]['commit']['committer']['name'], message: commits_response[j]['commit']['message'], date: commits_response[j]['commit']['committer']['date'], sha: commits_response[j]['commit']['tree']['sha'], url: commits_response[j]['commit']['url'], avatar_url: commits_response[j]['committer']['avatar_url'])
+        Commit.create(repo_id: current_repo.id,
+                commiter_name: commits_response[j]['commit']['committer']['name'],
+                      message: commits_response[j]['commit']['message'],
+                         date: commits_response[j]['commit']['committer']['date'],
+                          sha: commits_response[j]['commit']['tree']['sha'],
+                          url: commits_response[j]['commit']['url'],
+                   avatar_url: commits_response[j]['committer']['avatar_url'])
       end
     end
   end
