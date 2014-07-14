@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :repos
   require 'digest/sha1'
   authenticates_with_sorcery!
   def self.from_omniauth(auth)
