@@ -4,5 +4,5 @@ class Repo < ActiveRecord::Base
   has_many :notes
   has_many :resource_items
   has_many :todo_items
-  validates_uniqueness_of :name#, scope: :user_id
+  validates_uniqueness_of :name, scope: :user_id
 end

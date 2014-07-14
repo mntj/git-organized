@@ -20,11 +20,17 @@ class User < ActiveRecord::Base
     end
   end
 
-  def update_github_repos
+  def update_github_repos_and_commits
     repos_url = self.repos_url
     response = HTTParty.get(repos_url, headers: {"User-Agent" => "git-organized"})
     for i in 0...response.length
-      Repo.create(name: response[i]['name'], birthday: response[i]['created_at'], commits_url: response[i]['commits_url'], description: response[i]['description'])
+      Repo.create(user_id: current_user.id, name: response[i]['name'], birthday: response[i]['created_at'], commits_url: response[i]['commits_url'], description: response[i]['description'])
+      commit_url_arr = response[i]['commits_url'].scan(/.+?(?={)/)
+      commits_response = HTTParty.get(commit_url_arr[0], headers: {"User-Agent" => "git-organized"})
+      for j in 0...commits_response.length
+        binding.pry
+        Commit.create(repo_id: Repo.last.id, commiter_name: commits_response[j]['commit']['committer']['name'], message: commits_response[j]['commit']['message'], date: commits_response[j]['commit']['committer']['date'], sha: commits_response[j]['commit']['tree']['sha'], url: commits_response[j]['commit']['url'], avatar_url: commits_response[j]['committer']['avatar_url'])
+      end
     end
   end
 end
