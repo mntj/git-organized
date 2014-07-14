@@ -4,7 +4,10 @@ window.GitOrganized = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    console.log('Hello from Backbone!');
+    var router = new GitOrganized.Routers.Repos({
+
+    });
   }
 };
 
