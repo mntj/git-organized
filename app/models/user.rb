@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def update_github_repos
+    repos_url = self.repos_url
+    response = HTTParty.get(repos_url, headers: {"User-Agent" => "git-organized"})
+    for i in 0...response.length
+      Repo.create(name: response[i]['name'], birthday: response[i]['created_at'], commits_url: response[i]['commits_url'], description: response[i]['description'])
+    end
+  end
 end
