@@ -1,5 +1,4 @@
 GitOrganized.Collections.Repos = Backbone.Collection.extend({
-
-  model: GitOrganized.Models.Repo
-
+  model: GitOrganized.Models.Repo,
+  url: '/repos'
 });
