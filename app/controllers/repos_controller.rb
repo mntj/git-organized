@@ -21,12 +21,6 @@ class ReposController < ApplicationController
     render json: repo.to_json
   end
 
-  def destroy
-    repo = Repo.find(params[:id])
-    repo.destroy
-    render json: repo.to_json
-  end
-
   private
 
   def repo_params

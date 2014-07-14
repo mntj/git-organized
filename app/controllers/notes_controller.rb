@@ -3,6 +3,11 @@ class NotesController < ApplicationController
   def index
     notes = Note.all
     render json: notes.to_json
+
+    # When to use this format?
+    # respond_to do |format|
+      #format.json { render :json => JSON.parse(@response)}
+    #end
   end
 
   def show
