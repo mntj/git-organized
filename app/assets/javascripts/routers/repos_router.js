@@ -16,7 +16,7 @@ GitOrganized.Routers.Repos = Backbone.Router.extend({
       listIndex: this.reposListIndex
     }
 
-    this.body = $('.container');
+    this.body = $('.repos');
     return this;
   },
   index: function() {

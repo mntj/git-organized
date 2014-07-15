@@ -7,7 +7,7 @@ GitOrganized.Views.ReposIndex = Backbone.View.extend({
     this.listenTo(this.model, 'destroy', this.remove);
   },
   render: function() {
-    this.$el.html( this.template( this.model.attributes ));
+    this.$el.html( this.template( {repo: this.model.attributes} ));
     return this;
   },
   events: {
