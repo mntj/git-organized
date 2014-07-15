@@ -5,7 +5,9 @@ window.GitOrganized = {
   Routers: {},
   initialize: function() {
     console.log('Hello from Backbone!');
-    var router = new GitOrganized.Routers.Repos({
+    var repoRouter = new GitOrganized.Routers.Repos({
+    });
+    var commitRouter = new GitOrganized.Routers.Commits({
     });
     Backbone.history.start({pushState: true});
   }
