@@ -5,6 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
+  <% if current_user %>
+    <script type="text/javascript">
+      window.currentUser = {
+        id: "<%= current_user.id %>"
+      }
+    </script>
+  <% end %>
 </head>
 <body>
 

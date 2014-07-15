@@ -29,9 +29,9 @@ class User < ActiveRecord::Base
     for i in 0...response.length
       current_repo = Repo.create(user_id: self.id,
                                     name: response[i]['name'],
-                                    birthday: response[i]['created_at'],
-                                    commits_url: response[i]['commits_url'],
-                                    description: response[i]['description'])
+                                birthday: response[i]['created_at'],
+                             commits_url: response[i]['commits_url'],
+                             description: response[i]['description'])
       commit_url_arr = response[i]['commits_url'].scan(/.+?(?={)/)
       commits_url = commit_url_arr[0] + auth_str
       # Request user's commits for each repository

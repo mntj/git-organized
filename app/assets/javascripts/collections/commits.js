@@ -1,4 +1,4 @@
 GitOrganized.Collections.Commits = Backbone.Collection.extend({
   model: GitOrganized.Models.Commit,
-  url: '/commits'
+  url: '/repos/:repo_id/commits'
 });

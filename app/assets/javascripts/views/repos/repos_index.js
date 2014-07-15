@@ -11,8 +11,8 @@ GitOrganized.Views.ReposIndex = Backbone.View.extend({
     return this;
   },
   events: {
-    //'click' : 'fetch commits for this repo and append to DOM',
-  }
+
+   }
 });
 
 GitOrganized.Views.ReposListIndex = Backbone.View.extend({

@@ -12,14 +12,11 @@ Rails.application.routes.draw do
   post '/users' => 'users#create', as: 'users'
   delete '/users/:id' => 'users#destroy', as: 'destroy_user'
 
-  resources :commits, except: [:new, :edit]
 
-  resources :notes, except: [:new, :edit]
-
-  resources :repos, except: [:new, :edit]
-
-  resources :resource_items, except: [:new, :edit]
-
-  resources :todo_items, except: [:new, :edit]
-
+  resources :repos, except: [:new, :edit] do
+    resources :commits, except: [:new, :edit]
+    resources :notes, except: [:new, :edit]
+    resources :resource_items, except: [:new, :edit]
+    resources :todo_items, except: [:new, :edit]
+  end
 end
