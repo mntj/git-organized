@@ -20,6 +20,7 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
   render: function() {
     var that = this;
     this.$el.empty()
+    this.$el.append($("<option>").html("Select a repo"));
     _.each(this.collection.models, function(repo) {
       var repoView = new GitOrganized.Views.ReposIndex({model: repo});
       that.$el.append(repoView.render().el);

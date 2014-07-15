@@ -13,7 +13,15 @@ window.GitOrganized = {
 
 $(document).ready(function(){
   GitOrganized.initialize();
-    $("select").change(function(event){
-      debugger;
+
+    $("select").change(function(e){
+      var repoId = $('select').children(':selected')[0].children[0].value
+      console.log(repoId);
+      this.commits = new GitOrganized.Collections.Commits();
+      this.commits.fetch({
+        async: false,
+        data: {repo_id: parseInt(repoId)}
+      });
     });
+
 });
