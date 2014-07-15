@@ -9,10 +9,7 @@ GitOrganized.Views.ReposIndex = Backbone.View.extend({
   render: function() {
     this.$el.html( this.template( {repo: this.model.attributes} ));
     return this;
-  },
-  events: {
-
-   }
+  }
 });
 
 GitOrganized.Views.ReposListIndex = Backbone.View.extend({
@@ -25,7 +22,7 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
     this.$el.empty()
     _.each(this.collection.models, function(repo) {
       var repoView = new GitOrganized.Views.ReposIndex({model: repo});
-      that.$el.prepend(repoView.render().el);
+      that.$el.append(repoView.render().el);
     });
     return this;
   }

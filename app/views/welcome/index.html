@@ -11,17 +11,27 @@
         </form>
       </li>
       <li>
+        <form action="/signout">
+          <input type="submit" value="Heroku signout">
+        </form>
+      </li>
+      <li>
         <form action="http://localhost:3000/auth/github">
           <input type="submit" value="Local GitHub login">
+        </form>
+      </li>
+      <li>
+        <form action="http://localhost:3000/signout">
+          <input type="submit" value="Local signout">
         </form>
       </li>
     </ul>
   </div>
 
     <h3>Your repos:</h3>
-    <form action="#">
+    <form action="#" class="repo-selector">
+      <label for="Repos">Select a repo</label>
       <fieldset class="repos">
-        <label for="Repos">Select a repo</label>
       </fieldset>
     </form>
 

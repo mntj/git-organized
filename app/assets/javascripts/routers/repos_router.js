@@ -16,7 +16,8 @@ GitOrganized.Routers.Repos = Backbone.Router.extend({
     });
 
     this.repos.fetch({async: false});
-    this.commits.fetch({async: false});
+
+    //this.commits.fetch({async: false});
 
     this.views = {
       repolistIndex: this.reposListIndex,
