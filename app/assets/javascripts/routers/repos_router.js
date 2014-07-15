@@ -4,23 +4,32 @@ GitOrganized.Routers.Repos = Backbone.Router.extend({
   },
   initialize: function(options) {
     this.repos = new GitOrganized.Collections.Repos();
+    this.commits = new GitOrganized.Collections.Commits();
     var that = this;
 
     this.reposListIndex = new GitOrganized.Views.ReposListIndex({
       collection: this.repos
     });
 
+    this.commitsListIndex = new GitOrganized.Views.CommitsListIndex({
+      collection: this.commits
+    });
+
     this.repos.fetch({async: false});
+    this.commits.fetch({async: false});
 
     this.views = {
-      listIndex: this.reposListIndex
+      repolistIndex: this.reposListIndex,
+      commitlistIndex: this.commitsListIndex
     };
 
-    this.body = $('.repos');
+    this.repoBody = $('.repos');
+    this.commitBody = $('.commits');
     return this;
   },
   index: function() {
-    this.body.html( this.views.listIndex.render().el )
+    this.repoBody.html( this.views.repolistIndex.render().el )
+    this.commitBody.html( this.views.commitlistIndex.render().el )
     return this;
   }
 });
