@@ -1,7 +1,7 @@
 class ReposController < ApplicationController
 
   def index
-    repos = Repo.all
+    repos = Repo.where(user_id: current_user.id)
     render json: repos.to_json
   end
 

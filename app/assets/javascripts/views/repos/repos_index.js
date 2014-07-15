@@ -1,6 +1,6 @@
 GitOrganized.Views.ReposIndex = Backbone.View.extend({
 
-  tagName: 'li',
+  tagName: 'option',
   template: JST['repos/index'],
   initialize: function() {
     this.listenTo(this.model, 'all', this.render);
@@ -19,7 +19,7 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.collection, 'add', this.render);
   },
-  tagName: 'ul',
+  tagName: 'select',
   render: function() {
     var that = this;
     this.$el.empty()

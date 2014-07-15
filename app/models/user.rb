@@ -12,9 +12,7 @@ class User < ActiveRecord::Base
       user.github_profile_img = auth.info.image
       user.repos_url = auth.extra.raw_info.repos_url
       rand_string = (0...8).map { (65 + rand(26)).chr }.join
-      user.github_email = auth.info.email
-      user.github_email = rand_string + "@example.com" if user.github_email.empty?
-      user.email = user.github_email
+      user.email = rand_string + "@example.com"
       user.password = Digest::SHA1.hexdigest rand_string
       user.save!
     end

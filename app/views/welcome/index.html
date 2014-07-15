@@ -1,11 +1,31 @@
 <body>
 
-  <h1>Welcome to git-organized!</h1>
-    <a href="http://git-organized.herokuapp.com/auth/github">Login with GitHub through omniauth</a>
+  <div class="nav">
+    <ul>
+      <li>
+        <h3>git-organized</h3>
+      </li>
+      <li>
+        <form action="http://git-organized.herokuapp.com/auth/github">
+          <input type="submit" value="Login through GitHub on Heroku">
+        </form>
+      </li>
+      <li>
+        <form action="http://localhost:3000/auth/github">
+          <input type="submit" value="Local GitHub login">
+        </form>
+      </li>
+    </ul>
+  </div>
 
-    <a href="http://localhost:3000/auth/github">Local github</a>
-    <a href="/signout">Sign out</a>
+    <h3>Your repos:</h3>
+    <form action="#">
+      <fieldset class="repos">
+        <label for="Repos">Select a repo</label>
+      </fieldset>
+    </form>
 
-    <div class="repos"></div>
+    <h3>Commits:</h3>
+    <div class="commits"></div>
 
 </body>
