@@ -1,7 +1,7 @@
 class TodoItemsController < ApplicationController
 
   def index
-    todo_items = TodoItem.all
+    todo_items = TodoItem.where(repo_id: params[:repo_id])
     render json: todo_items.to_json
   end
 

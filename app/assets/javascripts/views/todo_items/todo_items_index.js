@@ -12,9 +12,27 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
     return this;
   },
   events: {
+    'change select': 'getTodos',
     'click [data-action="destroy"]': 'destroyItem',
     'click [data-action="edit"]': 'renderEditForm',
     'mouseover': 'highlight'
+  },
+  getTodos: function() {
+    console.log("in the get todos!");
+    var repoId = parseInt($('select').children(':selected')[0].children[0].value)
+    var todoItems = new GitOrganized.Collections.TodoItems();
+    var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
+      collection: todoItems
+    });
+    var todoItemBody = $('.todo-items');
+    todoItemBody.html( todoItemlistIndex.render().el )
+    todoItems.fetch({
+      async: false,
+      url: '/repos/'+String(repoId)+'/todo_items',
+      success: function(data) {
+        debugger;
+      }
+    });
   },
   destroyItem: function(e) {
     e.preventDefault();
