@@ -5,6 +5,7 @@ GitOrganized.Routers.Repos = Backbone.Router.extend({
   initialize: function(options) {
     this.repos = new GitOrganized.Collections.Repos();
     //this.commits = new GitOrganized.Collections.Commits();
+    this.todoItems = new GitOrganized.Collections.TodoItems();
     var that = this;
 
     this.reposListIndex = new GitOrganized.Views.ReposListIndex({
@@ -14,6 +15,7 @@ GitOrganized.Routers.Repos = Backbone.Router.extend({
     // this.commitsListIndex = new GitOrganized.Views.CommitsListIndex({
     //   collection: this.commits
     // });
+
 
     this.repos.fetch({async: false});
 
