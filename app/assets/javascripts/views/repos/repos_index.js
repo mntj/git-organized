@@ -36,7 +36,9 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
     }
   },
   getTodos: function(){
+    $(".todo-items").hide();
     console.log("in the get todos!");
+    $(".todo-items").fadeIn(975);
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
     var todoItems = new GitOrganized.Collections.TodoItems();
     var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
@@ -51,7 +53,6 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
       }
     });
   },
-  // get todos to fade also
   getCommits: function() {
     console.log("get commits works!");
     $(".commits").hide();

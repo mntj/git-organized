@@ -16,22 +16,7 @@ $(document).ready(function(){
   GitOrganized.initialize();
   $('body').fadeIn(1200);
   $(".commits, .commit-header").hide();
-  $("select").change(function(e){
-    // GitOrganized.Views.TodoItemsIndex.getTodos();
-    $(".commits").hide();
-    $('.commits, .commit-header').fadeIn(950);
-    var repoId = parseInt($('select').children(':selected')[0].children[0].value)
-    console.log(repoId);
-    var commits = new GitOrganized.Collections.Commits();
-    var commitListIndex = new GitOrganized.Views.CommitsListIndex({
-      collection: commits
-    });
-    var commitBody = $('.commits');
-    commitBody.html( commitListIndex.render().el )
-    commits.fetch({
-      url: '/repos/'+String(repoId)+'/commits',
-      success: function(data) {
-      }
-    });
-  });
+  // $("select").change(function(e){
+  //   // GitOrganized.Views.TodoItemsIndex.getTodos();
+  // });
 });
