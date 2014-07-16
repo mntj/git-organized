@@ -9,12 +9,14 @@ GitOrganized.Views.ReposIndex = Backbone.View.extend({
   render: function() {
     this.$el.html( this.template( {repo: this.model.attributes} ));
     return this;
-  }
+  },
+
 });
 
 GitOrganized.Views.ReposListIndex = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.collection, 'add', this.render);
+
   },
   tagName: 'select',
   render: function() {
@@ -26,5 +28,46 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
       that.$el.append(repoView.render().el);
     });
     return this;
+  },
+  events: {
+    'change': function() {
+      this.getTodos();
+      this.getCommits();
+    }
+  },
+  getTodos: function(){
+    console.log("in the get todos!");
+    var repoId = parseInt($('select').children(':selected')[0].children[0].value)
+    var todoItems = new GitOrganized.Collections.TodoItems();
+    var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
+      collection: todoItems
+    });
+    var todoItemBody = $('.todo-items');
+    todoItemBody.html( todoItemsListIndex.render().el )
+    todoItems.fetch({
+      async: false,
+      url: '/repos/'+String(repoId)+'/todo_items',
+      success: function(data) {
+      }
+    });
+  },
+  // get todos to fade also
+  getCommits: function() {
+    console.log("get commits works!");
+    $(".commits").hide();
+    $('.commits, .commit-header').fadeIn(950);
+    var repoId = parseInt($('select').children(':selected')[0].children[0].value)
+    console.log(repoId);
+    var commits = new GitOrganized.Collections.Commits();
+    var commitListIndex = new GitOrganized.Views.CommitsListIndex({
+      collection: commits
+    });
+    var commitBody = $('.commits');
+    commitBody.html( commitListIndex.render().el )
+    commits.fetch({
+      url: '/repos/'+String(repoId)+'/commits',
+      success: function(data) {
+      }
+    });
   }
 });

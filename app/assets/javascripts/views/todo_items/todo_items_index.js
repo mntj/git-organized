@@ -6,34 +6,36 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
+    this.listenTo($('select'), 'change', this.getTodos);
+    debugger;
   },
   render: function() {
     this.$el.html( this.template( this.model.attributes ));
     return this;
   },
   events: {
-    'change select': 'getTodos',
+    //'change select': 'getTodos',
     'click [data-action="destroy"]': 'destroyItem',
     'click [data-action="edit"]': 'renderEditForm',
     'mouseover': 'highlight'
   },
-  getTodos: function() {
-    console.log("in the get todos!");
-    var repoId = parseInt($('select').children(':selected')[0].children[0].value)
-    var todoItems = new GitOrganized.Collections.TodoItems();
-    var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
-      collection: todoItems
-    });
-    var todoItemBody = $('.todo-items');
-    todoItemBody.html( todoItemlistIndex.render().el )
-    todoItems.fetch({
-      async: false,
-      url: '/repos/'+String(repoId)+'/todo_items',
-      success: function(data) {
-        debugger;
-      }
-    });
-  },
+  // getTodos: function() {
+  //   console.log("in the get todos!");
+  //   var repoId = parseInt($('select').children(':selected')[0].children[0].value)
+  //   var todoItems = new GitOrganized.Collections.TodoItems();
+  //   var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
+  //     collection: todoItems
+  //   });
+  //   var todoItemBody = $('.todo-items');
+  //   todoItemBody.html( todoItemlistIndex.render().el )
+  //   todoItems.fetch({
+  //     async: false,
+  //     url: '/repos/'+String(repoId)+'/todo_items',
+  //     success: function(data) {
+  //       debugger;
+  //     }
+  //   });
+  // },
   destroyItem: function(e) {
     e.preventDefault();
     this.model.destroy();
@@ -62,6 +64,7 @@ GitOrganized.Views.TodoItemsListIndex = Backbone.View.extend({
     this.listenTo(this.collection, 'add', this.render);
   },
   tagName: 'ul',
+  id: 'todos-ul',
   render: function() {
     var that = this;
     this.$el.empty();

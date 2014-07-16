@@ -17,7 +17,7 @@ $(document).ready(function(){
   $('body').fadeIn(1200);
   $(".commits, .commit-header").hide();
   $("select").change(function(e){
-    GitOrganized.Views.TodoItemsIndex.getTodos();
+    // GitOrganized.Views.TodoItemsIndex.getTodos();
     $(".commits").hide();
     $('.commits, .commit-header').fadeIn(950);
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
