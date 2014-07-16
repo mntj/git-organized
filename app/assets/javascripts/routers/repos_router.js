@@ -13,7 +13,7 @@ GitOrganized.Routers.Repos = Backbone.Router.extend({
       collection: this.repos
     });
 
-    this.todoItemsListIndex = new GitOrganized.Views.todoItemsListIndex({
+    this.todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
       collection: this.todoItems
     });
     // this.commitsListIndex = new GitOrganized.Views.CommitsListIndex({
