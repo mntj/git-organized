@@ -12,11 +12,11 @@
       }
     </script>
   <% end %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 </head>
 <body>
-  <% if current_user %>
-   <p> Logged in as <%= current_user.name %> </p>
-  <% end %>
+
 <%= yield %>
 
 </body>

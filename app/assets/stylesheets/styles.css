@@ -8,13 +8,12 @@ input {
 
 h1, h2, h3, h4, h5,  h6 {
   text-align: center;
-  font-family: Arial;
+  font-family: Menlo;
 }
 
 form {
   text-align: center;
 }
-
 
 fieldset {
   border: 0;
@@ -41,23 +40,26 @@ fieldset {
   border-radius: 25px;
 }
 
-/*.commits li {
-  list-style: none url();
-}*/
+.todo-items li {
+  list-style-type: none;
+  text-align: center;
+}
 
-.nav ul {
+.container ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-.nav li {
+.container li {
   display: inline;
 }
 
-.nav {
+.container {
   background-color: lightblue;
+  margin: 0;
+  padding: 0;
 }
 
 form {

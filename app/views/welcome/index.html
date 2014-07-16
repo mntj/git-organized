@@ -1,32 +1,37 @@
 <body>
 
-  <div class="nav">
-    <ul>
-      <li>
-        <h3>git-organized</h3>
-      </li>
-      <li>
-        <form action="http://git-organized.herokuapp.com/auth/github">
-          <input type="submit" value="Login through GitHub on Heroku">
-        </form>
-      </li>
-      <li>
-        <form action="/signout">
-          <input type="submit" value="Heroku signout">
-        </form>
-      </li>
-      <li>
-        <form action="http://localhost:3000/auth/github">
-          <input type="submit" value="Local GitHub login">
-        </form>
-      </li>
-      <li>
-        <form action="http://localhost:3000/signout">
-          <input type="submit" value="Local signout">
-        </form>
-      </li>
-    </ul>
-  </div>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <% if current_user %>
+      <p> Logged in as <%= current_user.name %>
+      <% end %>
+      <ul>
+        <li>
+          <h3>git-organized</h3>
+        </li>
+        <li>
+          <form action="http://git-organized.herokuapp.com/auth/github">
+            <input type="submit" value="Login through GitHub on Heroku">
+          </form>
+        </li>
+        <li>
+          <form action="/signout">
+            <input type="submit" value="Heroku signout">
+          </form>
+        </li>
+        <li>
+          <form action="http://localhost:3000/auth/github">
+            <input type="submit" value="Local GitHub login">
+          </form>
+        </li>
+        <li>
+          <form action="http://localhost:3000/signout">
+            <input type="submit" value="Local signout">
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
     <h3>Your repos:</h3>
     <form action="#" class="repo-selector">
