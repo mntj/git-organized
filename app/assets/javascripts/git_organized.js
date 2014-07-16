@@ -16,6 +16,7 @@ $(document).ready(function(){
   GitOrganized.initialize();
   $('body').fadeIn(1200);
   $(".commits, .commit-header").hide();
+  $("input").addClass("btn btn-default");
   // $("select").change(function(e){
   //   // GitOrganized.Views.TodoItemsIndex.getTodos();
   // });

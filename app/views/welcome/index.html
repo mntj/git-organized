@@ -1,13 +1,13 @@
 <body>
 
-  <nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-      <% if current_user %>
+  <nav class="navbar">
+    <% if current_user %>
       <p> Logged in as <%= current_user.name %>
-      <% end %>
+    <% end %>
+    <div class="container">
       <ul>
         <li>
-          <h3>git-organized</h3>
+          <h1>Git-Organized</h1>
         </li>
         <li>
           <form action="http://git-organized.herokuapp.com/auth/github">

@@ -50,6 +50,7 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
       async: false,
       url: '/repos/'+String(repoId)+'/todo_items',
       success: function(data) {
+        $("button").addClass("btn btn-default");
       }
     });
   },

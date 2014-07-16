@@ -40,6 +40,10 @@ fieldset {
   border-radius: 25px;
 }
 
+.todo-items {
+  margin-top: 40px;
+}
+
 .todo-items li {
   list-style-type: none;
   text-align: center;
@@ -56,10 +60,17 @@ fieldset {
   display: inline;
 }
 
+.container h1 {
+  margin-bottom: 40px;
+}
+
 .container {
+  margin: 5;
+  padding: 10px;
+}
+
+nav {
   background-color: lightblue;
-  margin: 0;
-  padding: 0;
 }
 
 form {
