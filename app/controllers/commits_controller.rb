@@ -1,7 +1,7 @@
 class CommitsController < ApplicationController
 
   def index
-    commits = Commit.all
+    commits = Commit.where(repo_id: params[:repo_id])
     render json: commits.to_json
   end
 

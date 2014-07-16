@@ -14,14 +14,22 @@ window.GitOrganized = {
 $(document).ready(function(){
   GitOrganized.initialize();
 
-    $("select").change(function(e){
-      var repoId = $('select').children(':selected')[0].children[0].value
-      console.log(repoId);
-      this.commits = new GitOrganized.Collections.Commits();
-      this.commits.fetch({
-        async: false,
-        data: {repo_id: parseInt(repoId)}
-      });
+  $("select").change(function(e){
+    var repoId = parseInt($('select').children(':selected')[0].children[0].value)
+    console.log(repoId);
+    var commits = new GitOrganized.Collections.Commits();
+    var commitListIndex = new GitOrganized.Views.CommitsListIndex({
+      collection: commits
     });
+    var commitBody = $('.commits');
+    commitBody.html( commitListIndex.render().el )
+    commits.fetch({
+      async: false,
+      url: '/repos/'+String(repoId)+'/commits',
+      success: function(data) {
+        debugger;
+      }
+    });
+  });
 
 });
