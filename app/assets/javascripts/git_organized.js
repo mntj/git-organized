@@ -27,7 +27,6 @@ $(document).ready(function(){
       async: false,
       url: '/repos/'+String(repoId)+'/commits',
       success: function(data) {
-        debugger;
       }
     });
   });

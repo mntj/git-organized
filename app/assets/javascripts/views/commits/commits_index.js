@@ -21,7 +21,7 @@ GitOrganized.Views.CommitsListIndex = Backbone.View.extend({
     this.$el.empty();
     _.each(this.collection.models, function(commit) {
       var commitView = new GitOrganized.Views.CommitsIndex({model: commit});
-      that.$el.prepend(commitView.render().el);
+      that.$el.append(commitView.render().el);
     });
     return this;
   }
