@@ -13,7 +13,7 @@ window.GitOrganized = {
 
 $(document).ready(function(){
   GitOrganized.initialize();
-
+  $("commits").hide();
   $("select").change(function(e){
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
     console.log(repoId);
@@ -24,7 +24,6 @@ $(document).ready(function(){
     var commitBody = $('.commits');
     commitBody.html( commitListIndex.render().el )
     commits.fetch({
-      async: false,
       url: '/repos/'+String(repoId)+'/commits',
       success: function(data) {
       }
