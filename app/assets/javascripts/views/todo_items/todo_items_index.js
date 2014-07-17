@@ -15,7 +15,6 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
   events: {
     'click [data-action="destroy"]': 'destroyItem',
     'click': 'renderEditForm',
-    'hover': 'highlight'
   },
   destroyItem: function(e) {
     e.preventDefault();
@@ -40,10 +39,6 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
       that.model.set('content', newText);
       that.model.save();
     })
-    return this;
-  },
-  highlight: function() {
-    this.$el.css('color', 'blue');
     return this;
   }
 });

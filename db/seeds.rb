@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-for i in 0...35
+for i in 0...90
   TodoItem.create(content: 'Finish updating views', repo_id: i)
   TodoItem.create(content: 'Get API to work properly', repo_id: i)
   TodoItem.create(content: 'Fix feature to add notes', repo_id: i)
