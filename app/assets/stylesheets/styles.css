@@ -22,9 +22,8 @@ fieldset {
 .commits {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 200px;
+  height: 300px;
   width: 600px;
-  border: 1px solid black;
   margin: 0 auto;
   font-size: 17px;
   font-family: Menlo;
@@ -75,4 +74,8 @@ nav {
 
 form {
   display: inline;
+}
+
+.pusher {
+  margin-top: 100px;
 }

@@ -10,13 +10,11 @@ GitOrganized.Views.ReposIndex = Backbone.View.extend({
     this.$el.html( this.template( {repo: this.model.attributes} ));
     return this;
   },
-
 });
 
 GitOrganized.Views.ReposListIndex = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.collection, 'add', this.render);
-
   },
   tagName: 'select',
   render: function() {
@@ -37,7 +35,6 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
   },
   getTodos: function(){
     $(".todo-items").hide();
-    console.log("in the get todos!");
     $(".todo-items").fadeIn(975);
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
     var todoItems = new GitOrganized.Collections.TodoItems();
@@ -55,11 +52,9 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
     });
   },
   getCommits: function() {
-    console.log("get commits works!");
     $(".commits").hide();
     $('.commits, .commit-header').fadeIn(950);
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
-    console.log(repoId);
     var commits = new GitOrganized.Collections.Commits();
     var commitListIndex = new GitOrganized.Views.CommitsListIndex({
       collection: commits

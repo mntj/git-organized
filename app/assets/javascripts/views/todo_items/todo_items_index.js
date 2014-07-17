@@ -1,6 +1,7 @@
 GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
 
   tagName: 'li',
+  className: 'to-do',
   template: JST['todo_items/index'],
   editTodoTemplate: JST['todo_items/edit'],
   initialize: function() {
@@ -13,14 +14,17 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
   },
   events: {
     'click [data-action="destroy"]': 'destroyItem',
-    'click [data-action="edit"]': 'renderEditForm',
+    'click': 'renderEditForm',
     'hover': 'highlight'
   },
   destroyItem: function(e) {
     e.preventDefault();
     this.model.destroy();
   },
-  renderEditForm: function() {
+  renderEditForm: function(e) {
+    if(e.target.type ===  'text'){
+      return this;
+    }
     var that = this;
     this.$el.html(this.editTodoTemplate( this.model.attributes ));
     this.$el.find('form').on('submit', function(e) {
