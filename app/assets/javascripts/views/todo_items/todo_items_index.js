@@ -22,7 +22,10 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
     this.model.destroy();
   },
   renderEditForm: function(e) {
-    if(e.target.type ===  'text'){
+    $('html').not('.todo-input').click( function() {
+      return this;
+    })
+    if (e.target.type === 'text') {
       return this;
     }
     var that = this;

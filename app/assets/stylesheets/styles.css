@@ -79,3 +79,14 @@ form {
 .pusher {
   margin-top: 100px;
 }
+
+.sha {
+  display: inline;
+  margin-left: 20px;
+  color: lightgray;
+}
+
+.todo-input {
+  height: 55px;
+  font-size: 40px;
+}
