@@ -35,7 +35,9 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
   },
   getTodos: function(){
     $(".todo-items").hide();
+    $(".creator").hide();
     $(".todo-items").fadeIn(975);
+    $(".creator").fadeIn(975);
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
     var todoItems = new GitOrganized.Collections.TodoItems();
     var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({

@@ -20,4 +20,17 @@ $(document).ready(function(){
   $('body').fadeIn(1200);
   $(".commits, .commit-header").hide();
   $("input").addClass("btn btn-default");
+  $(".creator").click(function() {
+    var repoId = parseInt($('select').children(':selected')[0].children[0].value);
+    var todo = new GitOrganized.Models.TodoItem();
+    var todoInfo = {
+    content: '',
+    repo_id: repoId
+    };
+    todo.save(todoInfo, {
+      url: '/repos/'+String(repoId)+'/todo_items',
+      success: function() {
+      }
+    })
+  });
 });
