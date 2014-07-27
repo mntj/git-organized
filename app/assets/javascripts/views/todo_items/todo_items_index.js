@@ -21,14 +21,12 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
     this.model.destroy();
   },
   renderEditForm: function(e) {
-    // Doesn't work yet
-    var that = this;
-    $('.todo-input').dblclick(function () {
-      return this;
-    })
+    console.log("edit form rendered!");
+    $("input").addClass("btn btn-default");
     if (e.target.type === 'text') {
       return this;
     }
+    var that = this;
     this.$el.html(this.editTodoTemplate( this.model.attributes ));
     this.$el.find('form').on('submit', function(e) {
       e.preventDefault();
