@@ -24,7 +24,6 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
     // Doesn't work yet
     var that = this;
     $('.todo-input').dblclick(function () {
-      console.log('pooof')
       return this;
     })
     if (e.target.type === 'text') {

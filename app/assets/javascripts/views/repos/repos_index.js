@@ -1,5 +1,4 @@
 GitOrganized.Views.ReposIndex = Backbone.View.extend({
-
   tagName: 'option',
   template: JST['repos/index'],
   initialize: function() {
@@ -36,8 +35,10 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
   getTodos: function(){
     $(".todo-items").hide();
     $(".creator").hide();
-    $(".todo-items").fadeIn(975);
-    $(".creator").fadeIn(975);
+    $(".todos").hide();
+    $(".todo-items").fadeIn(1250);
+    $(".creator").fadeIn(1250);
+    $(".todos").fadeIn(1250);
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
     var todoItems = new GitOrganized.Collections.TodoItems();
     var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
@@ -52,6 +53,12 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
         $("button").addClass("btn btn-default");
       }
     });
+    $('.todos').find('form').on('submit', function(e) {
+      e.preventDefault();
+      var text = $('input').val();
+      $('input').val('');
+      todoItems.create({content: text})
+    })
   },
   getCommits: function() {
     $(".commits").hide();

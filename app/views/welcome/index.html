@@ -15,6 +15,11 @@
           </form>
         </li>
         <li>
+          <form action="http://localhost:3000/auth/github">
+            <input type="submit" value="Login through GitHub Local">
+          </form>
+        </li>
+        <li>
           <form action="/signout">
             <input type="submit" value="Signout">
           </form>
@@ -34,10 +39,14 @@
     <h3 class="commit-header">Commits:</h3>
     <div class="commits"></div>
 
-    <!-- <button type="button" class="btn btn-default creator" data-action="create">
-      <span class="glyphicon glyphicon-plus"></span>
-    </button> -->
+  <div class="todos">
+    <div class="todo-creation">
+      <form class='todo-form'>
+        <input name='todo-content' type="text" placeholder='New todo'>
+      </form>
+    </div>
     <div class="todo-items"></div>
+  </div>
 
 
     <p class="pusher"></p>

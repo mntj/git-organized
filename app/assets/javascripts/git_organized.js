@@ -18,7 +18,7 @@ $(document).ready(function(){
   }
   GitOrganized.initialize();
   $('body').fadeIn(1200);
-  $(".commits, .commit-header").hide();
+  $(".commits, .commit-header, .todos").hide();
   $("input").addClass("btn btn-default");
   $(".creator").click(function() {
     var repoId = parseInt($('select').children(':selected')[0].children[0].value);
