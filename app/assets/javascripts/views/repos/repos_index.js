@@ -53,11 +53,14 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
         $("button").addClass("btn btn-default");
       }
     });
-    $('.todos').find('form').on('submit', function(e) {
+    $('.todo-form').on('submit', function(e) {
       e.preventDefault();
-      var text = $('input').val();
-      $('input').val('');
-      todoItems.create({content: text})
+      var text = $('.todo-input').val();
+      $('.todo-input').val('');
+      todoItems.create({
+        content: text,
+        repo_id: repoId
+      })
     })
   },
   getCommits: function() {

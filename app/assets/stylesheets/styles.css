@@ -52,6 +52,16 @@ fieldset {
   font-size: 30px;
 }
 
+.todo-creation {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.todo-form input {
+  height: 50px;
+  font-size: 30px;
+}
+
 .container ul {
   list-style-type: none;
   margin: 0;
