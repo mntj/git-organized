@@ -14,7 +14,7 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
   },
   events: {
     'click [data-action="destroy"]': 'destroyItem',
-    'click': 'renderEditForm',
+    'click [data-action="edit"]': 'renderEditForm',
   },
   destroyItem: function(e) {
     e.preventDefault();
@@ -22,7 +22,7 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
   },
   renderEditForm: function(e) {
     console.log("edit form rendered!");
-    $("input").addClass("btn btn-default");
+    //$("input").addClass("btn btn-default");
     if (e.target.type === 'text') {
       return this;
     }
