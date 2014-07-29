@@ -14,15 +14,13 @@ GitOrganized.Views.TodoItemsIndex = Backbone.View.extend({
   },
   events: {
     'click [data-action="destroy"]': 'destroyItem',
-    'click [data-action="edit"]': 'renderEditForm',
+    'click [data-action="edit"]': 'renderEditForm'
   },
   destroyItem: function(e) {
     e.preventDefault();
     this.model.destroy();
   },
   renderEditForm: function(e) {
-    console.log("edit form rendered!");
-    //$("input").addClass("btn btn-default");
     if (e.target.type === 'text') {
       return this;
     }
@@ -54,5 +52,14 @@ GitOrganized.Views.TodoItemsListIndex = Backbone.View.extend({
       that.$el.prepend(todoView.render().el)
     });
     return this;
+  },
+  events: {
+    'click': 'reRender'
+  },
+  reRender: function(e) {
+    if (e.target.className === 'to-do') {
+      console.log("rerender!");
+      this.render();
+    }
   }
 });
