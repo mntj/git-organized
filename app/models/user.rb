@@ -36,9 +36,9 @@ class User < ActiveRecord::Base
       commits_response = HTTParty.get(commits_url, headers: {"User-Agent" => "git-organized"})
       for j in 0...commits_response.length
         commit_hash = commits_response[j]
-        commit_hash.keep_if { |k, v| ['commit', 'committer'].include? k }
+        commit_hash.keep_if { |k, v| ['commit', 'committer'].include?(k) && commit_hash[k] != nil}
         commit_hash['commit'].keep_if { |k, v| ["committer", "message", "tree", "url"].include? k }
-        commit_hash['committer'].keep_if { |k, v| k === "avatar_url" }
+        commit_hash['committer'].keep_if { |k, v| k === "avatar_url" } if commit_hash['committer']
         Commit.create(repo_id: current_repo.id,
                 commiter_name: commit_hash['commit']['committer']['name'],
                       message: commit_hash['commit']['message'],
