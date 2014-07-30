@@ -39,7 +39,6 @@ class User < ActiveRecord::Base
         commit_hash.keep_if { |k, v| ['commit', 'committer'].include? k }
         commit_hash['commit'].keep_if { |k, v| ["committer", "message", "tree", "url"].include? k }
         commit_hash['committer'].keep_if { |k, v| k === "avatar_url" }
-        binding.pry if j === 0
         Commit.create(repo_id: current_repo.id,
                 commiter_name: commit_hash['commit']['committer']['name'],
                       message: commit_hash['commit']['message'],
