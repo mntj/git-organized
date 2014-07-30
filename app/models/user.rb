@@ -35,13 +35,18 @@ class User < ActiveRecord::Base
       # Request user's commits for each repository
       commits_response = HTTParty.get(commits_url, headers: {"User-Agent" => "git-organized"})
       for j in 0...commits_response.length
+        commit_hash = commits_response[j]
+        commit_hash.keep_if { |k, v| ['commit', 'committer'].include? k }
+        commit_hash['commit'].keep_if { |k, v| ["committer", "message", "tree", "url"].include? k }
+        commit_hash['committer'].keep_if { |k, v| k === "avatar_url" }
+        binding.pry if j === 0
         Commit.create(repo_id: current_repo.id,
-                commiter_name: commits_response[j]['commit']['committer']['name'],
-                      message: commits_response[j]['commit']['message'],
-                         date: commits_response[j]['commit']['committer']['date'],
-                          sha: commits_response[j]['commit']['tree']['sha'],
-                          url: commits_response[j]['commit']['url'],
-                   avatar_url: commits_response[j]['committer']['avatar_url'])
+                commiter_name: commit_hash['commit']['committer']['name'],
+                      message: commit_hash['commit']['message'],
+                         date: commit_hash['commit']['committer']['date'],
+                          sha: commit_hash['commit']['tree']['sha'],
+                          url: commit_hash['commit']['url'],
+                   avatar_url: commit_hash['committer']['avatar_url'])
       end
     end
   end

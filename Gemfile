@@ -18,6 +18,7 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :production do
@@ -30,3 +31,4 @@ gem 'sorcery', '~> 0.8.6'
 gem 'backbone-on-rails'
 gem 'jquery-ui-rails'
 gem 'httparty'
+
