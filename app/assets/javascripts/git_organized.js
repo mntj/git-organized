@@ -19,5 +19,4 @@ $(document).ready(function(){
   GitOrganized.initialize();
   $('body').fadeIn(1200);
   $(".commits, .commit-header, .todos").hide();
-  $("input").addClass("btn btn-default");
 });

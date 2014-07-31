@@ -1,14 +1,18 @@
 body {
-  background-color: oldlace;
+  background-image: url("grey.png");
 }
 
 input {
   margin: 5px;
 }
 
-h1, h2, h3, h4, h5,  h6 {
+h1, h2 {
   text-align: center;
-  font-family: Menlo;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.repo-container h2 {
+  font-family: 'Titillium Web', sans-serif;
 }
 
 form {
@@ -31,12 +35,17 @@ fieldset {
 
 .commits li {
   list-style-type: none;
+  font-family: 'Menlo', sans-serif;
 }
 
 .commits img {
   height: 25px;
   width: 25px;
   border-radius: 25px;
+}
+
+.commit-header {
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .todo-items {
@@ -67,6 +76,17 @@ fieldset {
   font-size: 30px;
 }
 
+.todo-input {
+  height: 50px;
+  font-size: 30px;
+  font-family: 'Menlo', sans-serif;
+}
+
+.container {
+  margin: 5;
+  padding: 10px;
+}
+
 .container ul {
   list-style-type: none;
   margin: 0;
@@ -80,15 +100,17 @@ fieldset {
 
 .container h1 {
   margin-bottom: 40px;
-}
-
-.container {
-  margin: 5;
-  padding: 10px;
+  font-family: 'Titillium Web', sans-serif;
+  color: white;
 }
 
 nav {
-  background-color: lightblue;
+  background-image: url("debut_dark.png")
+}
+
+nav p {
+  color: white;
+  font-family: 'Menlo', serif;
 }
 
 form {
@@ -105,7 +127,6 @@ form {
   color: lightgray;
 }
 
-.todo-input {
-  height: 50px;
-  font-size: 30px;
+span {
+  font-family: 'Menlo', sans-serif;
 }

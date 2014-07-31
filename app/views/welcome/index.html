@@ -11,17 +11,17 @@
         </li>
         <li>
           <form action="http://git-organized.herokuapp.com/auth/github">
-            <input type="submit" value="Login through GitHub">
+            <input type="submit" value="Login through GitHub" class="btn btn-default">
           </form>
         </li>
         <li>
           <form action="http://localhost:3000/auth/github">
-            <input type="submit" value="Login through GitHub Local">
+            <input type="submit" value="Login through GitHub Local" class="btn btn-default">
           </form>
         </li>
         <li>
           <form action="/signout">
-            <input type="submit" value="Signout">
+            <input type="submit" value="Signout" class="btn btn-default">
           </form>
         </li>
       </ul>
@@ -29,20 +29,20 @@
   </nav>
 
   <div class="repo-container">
-    <h3>Your repos:</h3>
+    <h2>Your repos:</h2>
     <form action="#" class="repo-selector">
       <fieldset class="repos">
       </fieldset>
     </form>
   </div>
 
-    <h3 class="commit-header">Commits:</h3>
+    <h2 class="commit-header">Commits:</h2>
     <div class="commits"></div>
 
   <div class="todos">
     <div class="todo-creation">
       <form class='todo-form'>
-        <input name='todo-content' class="todo-input btn-default" type="text" placeholder='New todo'>
+        <input name='todo-content' class="todo-input" type="text" placeholder='New todo'>
       </form>
     </div>
     <div class="todo-items"></div>
