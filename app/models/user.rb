@@ -39,14 +39,16 @@ class User < ActiveRecord::Base
         # Remove key from hash if value is nil
         commit_hash.keep_if { |k, v| ['commit', 'committer'].include?(k) && commit_hash[k] != nil}
         commit_hash['commit'].keep_if { |k, v| ["committer", "message", "tree", "url"].include? k }
-        commit_hash['committer'].keep_if { |k, v| k === "avatar_url" } if commit_hash['committer']
+        commit_hash['committer'].keep_if { |k, v| k === "avatar_url" } if commit_hash['committer']['avatar_url']
+        avatar_url = commit_hash['committer']['avatar_url'] || commit_hash['committer']['gravatar_url'] if commit_hash['committer']
+
         Commit.create(repo_id: current_repo.id,
                 commiter_name: commit_hash['commit']['committer']['name'],
                       message: commit_hash['commit']['message'],
                          date: commit_hash['commit']['committer']['date'],
                           sha: commit_hash['commit']['tree']['sha'],
                           url: commit_hash['commit']['url'],
-                   avatar_url: commit_hash['committer']['avatar_url'])
+                   avatar_url: avatar_url
       end
     end
   end
