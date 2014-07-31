@@ -1,5 +1,4 @@
 <body>
-
   <nav class="navbar">
     <% if current_user %>
       <p> Logged in as <%= current_user.name %>
@@ -9,21 +8,26 @@
         <li>
           <h1>Git-Organized</h1>
         </li>
-        <li>
-          <form action="http://git-organized.herokuapp.com/auth/github">
-            <input type="submit" value="Login through GitHub" class="btn btn-default">
-          </form>
-        </li>
-        <li>
-          <form action="http://localhost:3000/auth/github">
-            <input type="submit" value="Login through GitHub Local" class="btn btn-default">
-          </form>
-        </li>
-        <li>
-          <form action="/signout">
-            <input type="submit" value="Signout" class="btn btn-default">
-          </form>
-        </li>
+        <% if !current_user %>
+          <li>
+            <form action="http://git-organized.herokuapp.com/auth/github">
+              <input type="submit" value="Login through GitHub" class="btn btn-default">
+            </form>
+          </li>
+          <!-- For local testing purposes -->
+          <!-- <li>
+            <form action="http://localhost:3000/auth/github">
+              <input type="submit" value="Login through GitHub Local" class="btn btn-default">
+            </form>
+          </li> -->
+        <% end %>
+        <% if current_user %>
+          <li>
+            <form action="/signout">
+              <input type="submit" value="Signout" class="btn btn-default">
+            </form>
+          </li>
+        <% end %>
       </ul>
     </div>
   </nav>
@@ -41,8 +45,8 @@
 
   <div class="todos">
     <div class="todo-creation">
-      <form class='todo-form'>
-        <input name='todo-content' class="todo-input" type="text" placeholder='New todo'>
+      <form class='todo-form form-horizontal'>
+        <input name='todo-content' class="todo-input form-control" type="text" placeholder='New todo'>
       </form>
     </div>
     <div class="todo-items"></div>
