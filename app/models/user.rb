@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
                          date: commit_hash['commit']['committer']['date'],
                           sha: commit_hash['commit']['tree']['sha'],
                           url: commit_hash['commit']['url'],
-                   avatar_url: avatar_url
+                   avatar_url: avatar_url)
       end
     end
   end
