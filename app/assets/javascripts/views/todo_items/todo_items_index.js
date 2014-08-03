@@ -58,7 +58,6 @@ GitOrganized.Views.TodoItemsListIndex = Backbone.View.extend({
   },
   reRender: function(e) {
     if (e.target.className === 'to-do' || e.target.className === 'todos') {
-      console.log("rerender!");
       this.render();
     }
   }

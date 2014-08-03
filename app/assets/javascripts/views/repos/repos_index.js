@@ -39,27 +39,29 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
     $(".todo-items").fadeIn(1250);
     $(".todos").fadeIn(1250);
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
-    var todoItems = new GitOrganized.Collections.TodoItems();
+    todoItems = new GitOrganized.Collections.TodoItems();
     var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
       collection: todoItems
     });
     var todoItemBody = $('.todo-items');
     todoItemBody.html( todoItemsListIndex.render().el )
     todoItems.fetch({
-      async: false,
       url: '/repos/'+String(repoId)+'/todo_items',
       success: function(data) {
-        $("button").addClass("btn btn-default");
       }
     });
     $('.todo-form').on('submit', function(e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
       var text = $('.todo-input').val();
-      $('.todo-input').val('');
-      todoItems.create({
+      var repoId = parseInt($('select').children(':selected')[0].children[0].value)
+      if (text) {
+        todoItems.create({
         content: text,
         repo_id: repoId
-      })
+        })
+      }
+      $('.todo-form')[0].reset();
     })
   },
   getCommits: function() {
