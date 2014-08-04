@@ -36,10 +36,14 @@ GitOrganized.Views.ReposListIndex = Backbone.View.extend({
     $(".todo-items").hide();
     $(".creator").hide();
     $(".todos").hide();
+    $(".todo-creation").hide();
     $(".todo-items").fadeIn(1250);
     $(".todos").fadeIn(1250);
+    $(".todo-creation").fadeIn(1250);
+    $(".todo-creation").html($("<form>").addClass("todo-form form-horizontal"))
+    $(".todo-form").html($("<input>").addClass("todo-input form-control").attr("placeholder", "New todo"))
     var repoId = parseInt($('select').children(':selected')[0].children[0].value)
-    todoItems = new GitOrganized.Collections.TodoItems();
+    var todoItems = new GitOrganized.Collections.TodoItems();
     var todoItemsListIndex = new GitOrganized.Views.TodoItemsListIndex({
       collection: todoItems
     });
