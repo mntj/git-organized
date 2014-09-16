@@ -1,7 +1,7 @@
 # Git-Organized
 __Git-Organized__ helps you keep track of your GitHub projects. 
 
-You can signup with your GitHub account, and create todo items to help you stay focused on what tasks you need to complete. 
+You can signup with your GitHub account, and then create todo items to help you stay focused on what tasks you need to complete. 
 
 ![alt-text](http://i.imgur.com/eVw4W00.png)
 
